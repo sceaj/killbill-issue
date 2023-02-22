@@ -1,6 +1,6 @@
-#Killbill Issue Reproduction
+# Killbill Issue Reproduction
 
-##Summary
+## Summary
 
 My company has been experiencing an issue with Killbill 0.22 after upgrading from 0.20.
 There is an intermittent issue where the payload of the HTTP request is corrupt before handing it off to Jackson for 
@@ -18,7 +18,7 @@ production configuration of our Killbill deployment, the issue occurs much more 
 (which typically are non-retryable requests).  This is not a viable long-term solution as it requires modification of 
 our standard production monitoring and alerting standards.
 
-##How to Reproduce
+## How to Reproduce
 
 ### Prerequisites
 
