@@ -27,7 +27,7 @@ session = requests.Session()
 
 tenant_response = session.get(f"http://localhost:8080/1.0/kb/tenants?apiKey={api_key}", headers=headers)
 if tenant_response.status_code != 200:
-    tenant_response = session.post('http://localhost:8080/1.0/kb/tenants', data=f'{ "apiKey": {apiKey}, "apiSecret": {apiSecret} }', headers=headers, verify=False)
+    tenant_response = session.post('http://localhost:8080/1.0/kb/tenants', json={'apiKey': api_key, 'apiSecret': api_secret}, headers=headers, verify=False)
     if tenant_response.status_code != 200:
         exit(1)
 

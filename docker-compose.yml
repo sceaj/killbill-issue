@@ -2,7 +2,7 @@ version: '3.7'
 services:
   killbill:
     build:
-      context: ./killbill-issue-plugin/target
+      context: ./killbill-test-plugin/target
       dockerfile: ../../Dockerfile
     image: sceaj/killbill-issue:0.22.32
     ports:
