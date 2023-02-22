@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  killbill:
+    build:
+      context: ./killbill-issue-plugin/target
+      dockerfile: ../../Dockerfile
+    image: sceaj/killbill-issue:0.22.32
+    ports:
+      - "8080:8080"
+      - "8083:12345"
+    environment:
+      - KB_org_killbill_dao_url=jdbc:postgresql://postgres:5432/killbill?currentSchema=core
+      - KB_org_killbill_dao_user=kbadmin
+      - KB_org_killbill_dao_password=kbadminpwd
+    depends_on:
+      - postgres
+
+  kaui:
+    image: killbill/kaui:2.0.10
+    ports:
+      - "9090:8080"
+    environment:
+      - KAUI_CONFIG_DAO_URL=jdbc:postgresql://postgres:5432/killbill?currentSchema=kaui
+      - KAUI_CONFIG_DAO_USER=kauiadmin
+      - KAUI_CONFIG_DAO_PASSWORD=kauiadminpwd
+      - KAUI_CONFIG_DAO_ADAPTER=postgresql
+      - KAUI_DB_ENCODING=utf8
+      - KAUI_KILLBILL_URL=http://killbill:8080
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=adminpwd
+      - TZ=America/Los_Angeles
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./mnt/postgresql/data:/var/lib/postgresql/data

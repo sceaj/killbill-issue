@@ -1,0 +1,12 @@
+CREATE USER kbadmin WITH ENCRYPTED PASSWORD 'kbadminpwd';
+CREATE USER kauiadmin WITH ENCRYPTED PASSWORD 'kauiadminpwd';
+CREATE DATABASE killbill WITH OWNER kbadmin;
+\connect killbill
+CREATE SCHEMA core AUTHORIZATION kbadmin;
+ALTER ROLE kbadmin SET search_path TO core,public;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA core to kbadmin;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA core to kbadmin;
+CREATE SCHEMA kaui AUTHORIZATION kauiadmin;
+ALTER ROLE kauiadmin SET search_path TO kaui,public;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA kaui to kauiadmin;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA kaui to kauiadmin;
