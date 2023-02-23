@@ -54,7 +54,7 @@ initialized, you can proceed to run the setup scripts:
 ```shell
 ./setup_database.sh
 ```
-This command will run several scripts in the `./killbill-db` directory.  Scan the output for any 
+This command will run several scripts from the `./killbill-db` directory.  Scan the output for any 
 errors and troubleshoot as necessary.  Once the database has been initialized, proceed with bringing up 
 killbill (and optionally, kaui).
 
@@ -118,4 +118,4 @@ That "Request Failed" is an example of the issue.  If you debug you can find tha
 "externalId": "ca316ad6-8740-4106-9d06-3d716331fa09", ...
 ```
 In other words, the opening "{" is missing and is caused by the ServletRequest object having "skipped over" the opening brace.  There is an internal buffer that 
-shows all of the data that has been read off the network, and it definitely includes the opening "{", but is some cases it is skipped.
+shows all of the data that has been read off the network, and it definitely includes the opening "{", but in some cases it is skipped.
