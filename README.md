@@ -26,7 +26,7 @@ Using this project will require the following:
 1. A local Java 8 JDK (for building)
 2. A local Maven 3 installation (for building)
 3. A local docker environment with docker-compose support (for running Killbill)
-4. A local Python 3.7+  installtion (for running the test-harness)
+4. A local Python 3.7+  installation (for running the test-harness)
 
 ### Build the plugin
 
