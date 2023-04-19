@@ -4,7 +4,7 @@ services:
     build:
       context: ./killbill-test-plugin/target
       dockerfile: ../../Dockerfile
-    image: sceaj/killbill-issue:0.22.32
+    image: sceaj/killbill-issue:0.24.1
     ports:
       - "8080:8080"
       - "8083:12345"
@@ -16,7 +16,7 @@ services:
       - postgres
 
   kaui:
-    image: killbill/kaui:2.0.10
+    image: killbill/kaui:2.0.11
     ports:
       - "9090:8080"
     environment:

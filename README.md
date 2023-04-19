@@ -2,7 +2,10 @@
 
 ## Summary
 
-My company has been experiencing an issue with Killbill 0.22 after upgrading from 0.20.
+This version of the repo has been upgraded to use Killbill 0.24, since 0.22 is EOL now.  
+We weren't able to reproduce the issue in Killbill 0.24.
+
+My company has been experiencing an issue with Killbill 0.22 after upgrading from 0.20. 
 There is an intermittent issue where the payload of the HTTP request is corrupt before handing it off to Jackson for 
 deserialization.
 The repo is intended to reproduce with issue with the most basic configuration possible.
@@ -23,7 +26,7 @@ our standard production monitoring and alerting standards.
 ### Prerequisites
 
 Using this project will require the following:
-1. A local Java 8 JDK (for building)
+1. A local Java 11+ JDK (for building)
 2. A local Maven 3 installation (for building)
 3. A local docker environment with docker-compose support (for running Killbill)
 4. A local Python 3.7+  installation (for running the test-harness)
@@ -35,7 +38,7 @@ Build the plugin by issuing the following command:
 ```shell
 mvn clean package
 ```
-This should generate the file `killbill-test-plugin-0.22.32.jar` in the directory `killbill-test-plugin/target`.
+This should generate the file `killbill-test-plugin-0.24.0.jar` in the directory `killbill-test-plugin/target`.
 
 ### Prepare the Killbill (and Kaui) Database(s)
 
@@ -60,9 +63,9 @@ killbill (and optionally, kaui).
 
 ### Build and start the Killbill Docker image
 
-Building the docker image uses the base image `killbill/killbill:0.22.32`.  
+Building the docker image uses the base image `killbill/killbill:0.24.1`.  
 All it does is add the plugin that we built in the previous step.  
-The resulting image (with the plugin added) is: `sceaj/killbill-issue:0.22.32`.
+The resulting image (with the plugin added) is: `sceaj/killbill-issue:0.24.1`.
 
 _All of the following commands should be issued from the project root directory._
 
